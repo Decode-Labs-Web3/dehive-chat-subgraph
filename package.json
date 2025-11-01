@@ -1,0 +1,32 @@
+{
+  "name": "dehive-chat-subgraph",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "create-local": "graph create --node http://localhost:8020/ onchain-chat",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 onchain-chat",
+    "deploy:studio": "graph deploy --studio onchain-chat"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Decode-Labs-Web3/dehive-chat-subgraph.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Decode-Labs-Web3/dehive-chat-subgraph/issues"
+  },
+  "homepage": "https://github.com/Decode-Labs-Web3/dehive-chat-subgraph#readme",
+  "devDependencies": {
+    "@graphprotocol/graph-ts": "^0.38.2",
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

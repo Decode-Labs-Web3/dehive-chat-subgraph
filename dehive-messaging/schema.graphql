@@ -1,0 +1,68 @@
+type ConversationCreated @entity(immutable: true) {
+  id: Bytes!
+  conversationId: BigInt! # uint256
+  smallerAddress: Bytes! # address
+  largerAddress: Bytes! # address
+  createdAt: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type FeeCharged @entity(immutable: true) {
+  id: Bytes!
+  amount: BigInt! # uint256
+  from: Bytes! # address
+  createdAt: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type FundsDeposited @entity(immutable: true) {
+  id: Bytes!
+  amount: BigInt! # uint256
+  from: Bytes! # address
+  createdAt: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MessageSent @entity(immutable: true) {
+  id: Bytes!
+  conversationId: BigInt! # uint256
+  from: Bytes! # address
+  to: Bytes! # address
+  encryptedMessage: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PayAsYouGoFeeSet @entity(immutable: true) {
+  id: Bytes!
+  amount: BigInt! # uint256
+  createdAt: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RelayerFeeSet @entity(immutable: true) {
+  id: Bytes!
+  amount: BigInt! # uint256
+  createdAt: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RelayerSet @entity(immutable: true) {
+  id: Bytes!
+  relayer: Bytes! # address
+  createdAt: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
