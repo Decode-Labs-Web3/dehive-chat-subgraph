@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "codegen": "graph codegen",
-    "build": "graph build",
-    "create-local": "graph create --node http://localhost:8020/ onchain-chat",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 onchain-chat",
-    "deploy:studio": "graph deploy --studio onchain-chat"
+    "codegen": "cd dehive-messaging && graph codegen",
+    "build": "cd dehive-messaging && graph build",
+    "deploy": "cd dehive-messaging && graph deploy --node https://api.studio.thegraph.com/deploy/ dehive-messaging",
+    "deploy:studio": "cd dehive-messaging && graph deploy --node https://api.studio.thegraph.com/deploy/ dehive-messaging",
+    "create-local": "cd dehive-messaging && graph create --node http://localhost:8020/ dehive-messaging",
+    "deploy-local": "cd dehive-messaging && graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 dehive-messaging"
   },
   "repository": {
     "type": "git",

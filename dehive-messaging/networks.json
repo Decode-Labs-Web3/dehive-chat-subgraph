@@ -1,8 +1,8 @@
 {
   "sepolia": {
     "Message": {
-      "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
-      "startBlock": 9535606
+      "address": "0x41BC86bA44813b2B106E1942CB68cc471714df2D",
+      "startBlock": 9535551
     }
   }
 }

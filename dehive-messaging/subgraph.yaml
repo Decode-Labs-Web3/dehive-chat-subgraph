@@ -8,9 +8,9 @@ dataSources:
     name: Message
     network: sepolia
     source:
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+      address: "0x41BC86bA44813b2B106E1942CB68cc471714df2D"
       abi: Message
-      startBlock: 9535606
+      startBlock: 9535551
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.9
