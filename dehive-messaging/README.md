@@ -130,9 +130,17 @@ This subgraph indexes events from a Diamond proxy pattern:
 
 The schema defines immutable entities for each event type, storing all event parameters along with block number, timestamp, and transaction hash for querying.
 
+## Querying Messages
+
+See [QUERY_GUIDE.md](./QUERY_GUIDE.md) for comprehensive examples on how to:
+- Query messages directly from the contract using ethers.js or web3.js
+- Query messages from the subgraph using GraphQL
+- Get conversation details, user balances, and event history
+
 ## Development
 
 - Schema: `schema.graphql`
 - Event Handlers: `src/message.ts`
 - Configuration: `subgraph.yaml`
 - ABI: `abis/Message.json`
+- Query Guide: `QUERY_GUIDE.md`
