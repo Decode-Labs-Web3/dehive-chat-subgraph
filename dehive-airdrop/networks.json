@@ -1,0 +1,16 @@
+{
+  "sepolia": {
+    "ServerAirdropRegistry": {
+      "address": "0x387D6D818F0cafF8a98E9EFecB75694246cF8D92",
+      "startBlock": 9552434
+    },
+    "AirdropFactory": {
+      "address": "0xbB74D9DbDA62E8cc28DcC59a461F903D9E5246E0",
+      "startBlock": 9552433
+    },
+    "MerkleAirdrop": {
+      "address": "0x1910CaEF722E6811a8b293942DFfFb7c38c23b48",
+      "startBlock": 9552432
+    }
+  }
+}

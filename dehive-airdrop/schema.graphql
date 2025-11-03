@@ -1,0 +1,35 @@
+type Factory @entity(immutable: false) {
+  id: ID! # Factory address
+  serverId: Bytes! # Indexed string stored as bytes32 hash (keccak256 of the string)
+  owner: Bytes!
+  creator: Bytes!
+  createdAt: BigInt!
+  blockNumber: BigInt!
+  campaigns: [Campaign!]! @derivedFrom(field: "factory")
+}
+
+type Campaign @entity(immutable: false) {
+  id: ID! # Campaign address
+  factory: Factory!
+  serverId: Bytes! # Indexed string stored as bytes32 hash (keccak256 of the string)
+  creator: Bytes!
+  token: Bytes!
+  merkleRoot: Bytes!
+  metadataURI: String!
+  totalAmount: BigInt!
+  claimedAmount: BigInt!
+  createdAt: BigInt!
+  blockNumber: BigInt!
+  claims: [Claim!]! @derivedFrom(field: "campaign")
+}
+
+type Claim @entity(immutable: true) {
+  id: ID! # `${campaign.address}-${index}`
+  campaign: Campaign!
+  user: Bytes!
+  index: BigInt!
+  amount: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
