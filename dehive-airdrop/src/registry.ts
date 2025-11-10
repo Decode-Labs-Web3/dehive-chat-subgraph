@@ -1,5 +1,8 @@
 import { Address } from "@graphprotocol/graph-ts";
-import { FactoryCreated as FactoryCreatedEvent } from "../generated/ServerAirdropRegistry/ServerAirdropRegistry";
+import {
+  FactoryCreated as FactoryCreatedEvent,
+  ServerAirdropRegistry,
+} from "../generated/ServerAirdropRegistry/ServerAirdropRegistry";
 import { Factory } from "../generated/schema";
 import { AirdropFactory as AirdropFactoryTemplate } from "../generated/templates";
 
@@ -10,10 +13,19 @@ import { AirdropFactory as AirdropFactoryTemplate } from "../generated/templates
 export function handleFactoryCreated(event: FactoryCreatedEvent): void {
   // Create Factory entity
   const factory = new Factory(event.params.factory.toHexString());
-  // serverId is indexed string in Solidity, which means it's stored as bytes32 hash
-  // We cannot retrieve the original string from indexed event parameters
-  // Store the hash as Bytes - to query by serverId, hash the string first
-  factory.serverId = event.params.serverId;
+
+  // Get the actual serverId string from the contract since indexed strings are hashed in events
+  const registry = ServerAirdropRegistry.bind(event.address);
+  const serverIdResult = registry.try_getServerIdByFactory(
+    event.params.factory
+  );
+  if (!serverIdResult.reverted) {
+    factory.serverId = serverIdResult.value;
+  } else {
+    // Fallback: try to decode from bytes (though this won't work for indexed strings)
+    factory.serverId = event.params.serverId.toString();
+  }
+
   factory.owner = event.params.owner;
   factory.creator = event.params.creator;
   factory.createdAt = event.params.timestamp;

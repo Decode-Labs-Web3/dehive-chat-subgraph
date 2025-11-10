@@ -4,7 +4,7 @@ This guide shows how to query messages and conversations from the Message contra
 
 ## Contract Information
 
-- **Proxy Address (Sepolia)**: `0x41BC86bA44813b2B106E1942CB68cc471714df2D`
+- **Proxy Address (Sepolia)**: `0x83Eb2fC1925522434C17C6a32eCE67f4620b73C8`
 - **Network**: Sepolia
 - **ABI**: Available in `abis/Message.json`
 

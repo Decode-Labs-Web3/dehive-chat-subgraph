@@ -99,6 +99,8 @@ query GetServerCampaigns($serverId: String!) {
 }
 ```
 
+**Note**: The `serverId` is now stored as a `String` by querying the contract directly, since indexed strings in events are stored as hashes. The handlers fetch the actual string value from the contract using `getServerId()` and `getServerIdByFactory()` functions.
+
 ## Contract Addresses (Sepolia)
 
 - **Registry**: `0x387D6D818F0cafF8a98E9EFecB75694246cF8D92`

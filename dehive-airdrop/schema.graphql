@@ -1,6 +1,6 @@
 type Factory @entity(immutable: false) {
   id: ID! # Factory address
-  serverId: Bytes! # Indexed string stored as bytes32 hash (keccak256 of the string)
+  serverId: String!
   owner: Bytes!
   creator: Bytes!
   createdAt: BigInt!
@@ -11,7 +11,7 @@ type Factory @entity(immutable: false) {
 type Campaign @entity(immutable: false) {
   id: ID! # Campaign address
   factory: Factory!
-  serverId: Bytes! # Indexed string stored as bytes32 hash (keccak256 of the string)
+  serverId: String!
   creator: Bytes!
   token: Bytes!
   merkleRoot: Bytes!

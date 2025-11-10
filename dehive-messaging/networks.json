@@ -1,7 +1,11 @@
 {
   "sepolia": {
     "Message": {
-      "address": "0x41BC86bA44813b2B106E1942CB68cc471714df2D",
+      "address": "0x83Eb2fC1925522434C17C6a32eCE67f4620b73C8",
+      "startBlock": 9535551
+    },
+    "PaymentHub": {
+      "address": "0x83Eb2fC1925522434C17C6a32eCE67f4620b73C8",
       "startBlock": 9535551
     }
   }

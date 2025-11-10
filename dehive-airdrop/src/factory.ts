@@ -1,5 +1,8 @@
 import { Address, BigInt } from "@graphprotocol/graph-ts";
-import { AirdropCampaignCreated as AirdropCampaignCreatedEvent } from "../generated/templates/AirdropFactory/AirdropFactory";
+import {
+  AirdropCampaignCreated as AirdropCampaignCreatedEvent,
+  AirdropFactory,
+} from "../generated/templates/AirdropFactory/AirdropFactory";
 import { Factory, Campaign } from "../generated/schema";
 import { MerkleAirdrop as MerkleAirdropTemplate } from "../generated/templates";
 
@@ -21,8 +24,18 @@ export function handleAirdropCampaignCreated(
   // Create Campaign entity
   const campaign = new Campaign(event.params.campaign.toHexString());
   campaign.factory = factory.id;
-  // serverId is indexed string, stored as bytes32 hash
-  campaign.serverId = event.params.serverId;
+
+  // Get the actual serverId string from the factory contract
+  // Since serverId is indexed in the event, we need to query the contract
+  const factoryContract = AirdropFactory.bind(event.address);
+  const serverIdResult = factoryContract.try_getServerId();
+  if (!serverIdResult.reverted) {
+    campaign.serverId = serverIdResult.value;
+  } else {
+    // Fallback: use the serverId from the factory entity
+    campaign.serverId = factory.serverId;
+  }
+
   campaign.creator = event.params.creator;
   campaign.token = event.params.token;
   campaign.merkleRoot = event.params.merkleRoot;
