@@ -1,0 +1,17 @@
+type Payment @entity(immutable: true) {
+  id: ID! # `${transactionHash}-${logIndex}`
+  conversationId: BigInt!
+  sender: Bytes!
+  recipient: Bytes!
+  token: Bytes! # Token address (0x0 for native ETH)
+  amount: BigInt!
+  fee: BigInt!
+  ipfsCid: String! # Message/payment note stored on IPFS
+  contentHash: Bytes!
+  mode: Int! # Payment mode (0 = ERC20, 1 = Native, etc.)
+  clientMsgId: String!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
